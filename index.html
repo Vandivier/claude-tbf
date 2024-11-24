@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John's Blog</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        nav {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            margin-right: 20px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .blog-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"], 
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .article {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .article h2 {
+            color: #444;
+            margin-top: 0;
+        }
+
+        .article p {
+            line-height: 1.6;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about/index.html">About</a>
+    </nav>
+
+    <h1>John's Blog</h1>
+
+    <div class="blog-form">
+        <h2>Create New Article</h2>
+        <form id="articleForm">
+            <div class="form-group">
+                <label for="articleTitle">Title:</label>
+                <input type="text" id="articleTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="articleBody">Content:</label>
+                <textarea id="articleBody" required></textarea>
+            </div>
+            <button type="submit">Publish Article</button>
+        </form>
+    </div>
+
+    <div id="articles">
+        <article class="article">
+            <h2>Welcome to My Blog</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </article>
+    </div>
+
+    <script>
+        document.getElementById('articleForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('articleTitle').value;
+            const body = document.getElementById('articleBody').value;
+            
+            const article = document.createElement('article');
+            article.className = 'article';
+            
+            const titleElement = document.createElement('h2');
+            titleElement.textContent = title;
+            
+            const bodyElement = document.createElement('p');
+            bodyElement.textContent = body;
+            
+            article.appendChild(titleElement);
+            article.appendChild(bodyElement);
+            
+            const articlesContainer = document.getElementById('articles');
+            articlesContainer.insertBefore(article, articlesContainer.firstChild);
+            
+            this.reset();
+        });
+    </script>
+</body>
+</html>
